@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form DIrect</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<style>
+     form label{
+      display: block;
+      margin-bottom: 5px;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      resize: vertical;
+      
+    }
+
+
+</style>
+<body>
+    
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 row justify-content-center" >
+               <h1 class="text-dark mb-5 ">
+                Data Pemesanan
+               </h1> 
+
+               <form>
+                <div class="mb-1">
+                <label for="">Nama</label>
+                <input type="text" class="name" required>
+                </div>
+
+                <div class="mb-1">
+                <label for="">No.Telpon</label>
+                <input type="int" class="number" required>
+                </div>
+
+                <div class="mb-1">
+                <label for="">Alamat</label>
+                <input type="text" class="address" required>
+                </div>
+
+                <div class="mb-1">
+                <label for="">Choco Cookie</label>
+                <select name="jumlah pesanan" class="pesanan">
+                    <option value="Choco Cookie">Choco Cookie</option>
+                </select>
+                 </div>
+
+                <div class="mb-1">
+                <label for="">Jumlah Pesanan</label>
+                <select name="jumlah pesanan" class="jumlah_pesanan">
+                    <option value="1 box">1 Box</option>
+                    <option value="2 box">2 Box</option>
+                    <option value="3 box">3 Box</option>
+                    <option value="4 box">4 Box</option>
+                </select>
+                 </div>
+
+                <div>
+                <div class="mb-1">
+                <label for="">Catatan</label>
+                <textarea class="message"></textarea>
+                </div>
+                <button class="btn btn-primary px-4" type="button" onclick="sendwhatsapp();">Send Via WhatsApp</button>
+              </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function sendwhatsapp(){
+         var phonenumber = "+6281344226018";
+  
+         var name = document.querySelector(".name").value;
+         var number = document.querySelector(".number").value;
+         var address = document.querySelector(".address").value;
+         var pesanan = document.querySelector(".pesanan").value;
+         var jumlah_pesanan = document.querySelector(".jumlah_pesanan").value;
+         var message = document.querySelector(".message").value;
+  
+         var url = "https://wa.me/" + phonenumber + "?text="
+         +"Nama :* "+name+"%0a"
+         +"No.Telp :* "+number+"%0a"
+         +"Alamat :* "+address+"%0a"
+         +"Pemesanan :* "+pesanan+"%0a"
+         +"Jumlah Pemesanan :* "+jumlah_pesanan+"%0a"
+         +"Catatan :* "+message
+         +"%0a%0a"
+         +"admin akan menerima data ini Terima Kasih";
+  
+         window.open(url, '_blank').focus();
+       }
+      </script>
+</body>
+</html>
